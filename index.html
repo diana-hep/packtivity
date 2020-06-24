@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to packtivity’s documentation! &#8212; packtivity 0.5 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-packtivity-s-documentation">
+<h1>Welcome to packtivity’s documentation!<a class="headerlink" href="#welcome-to-packtivity-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-packtivity.statecontexts.posixfs_context"></span><dl class="py class">
+<dt id="packtivity.statecontexts.posixfs_context.LocalFSState">
+<em class="property">class </em><code class="sig-prename descclassname">packtivity.statecontexts.posixfs_context.</code><code class="sig-name descname">LocalFSState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">readwrite</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">readonly</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dependencies</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">identifier</span><span class="o">=</span><span class="default_value">'unidentified_state'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/packtivity/statecontexts/posixfs_context.html#LocalFSState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#packtivity.statecontexts.posixfs_context.LocalFSState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Local Filesyste State consisting of a number of readwrite and readonly directories</p>
+<dl class="py method">
+<dt id="packtivity.statecontexts.posixfs_context.LocalFSState.contextualize_value">
+<code class="sig-name descname">contextualize_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/packtivity/statecontexts/posixfs_context.html#LocalFSState.contextualize_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#packtivity.statecontexts.posixfs_context.LocalFSState.contextualize_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>contextualizes string data by string interpolation.
+replaces ‘{workdir}’ placeholder with first readwrite directory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="packtivity.statecontexts.posixfs_context.LocalFSState.ensure">
+<code class="sig-name descname">ensure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/packtivity/statecontexts/posixfs_context.html#LocalFSState.ensure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#packtivity.statecontexts.posixfs_context.LocalFSState.ensure" title="Permalink to this definition">¶</a></dt>
+<dd><p>ensures existence of readwrite and meta directories.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="packtivity.statecontexts.posixfs_context.LocalFSState.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/packtivity/statecontexts/posixfs_context.html#LocalFSState.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#packtivity.statecontexts.posixfs_context.LocalFSState.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>resets state by deleting readwrite directory contents (deletes tree and re-creates)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="packtivity.statecontexts.posixfs_context.LocalFSState.state_hash">
+<code class="sig-name descname">state_hash</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/packtivity/statecontexts/posixfs_context.html#LocalFSState.state_hash"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#packtivity.statecontexts.posixfs_context.LocalFSState.state_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate hash to snapshot current state (used for caching / change detection)
+checks both readwrite directories and dependencies (assumed to be subtrees of readwrite directories)
+return: SHA1 hash</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-packtivity.syncbackends"></span><dl class="py function">
+<dt id="packtivity.syncbackends.build_env">
+<code class="sig-prename descclassname">packtivity.syncbackends.</code><code class="sig-name descname">build_env</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">environment</span></em>, <em class="sig-param"><span class="n">parameters</span></em>, <em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">pack_config</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/packtivity/syncbackends.html#build_env"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#packtivity.syncbackends.build_env" title="Permalink to this definition">¶</a></dt>
+<dd><p>builds an environment template description and builds a fully-defined env
+this will use a handler in the future (just as build_job)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="packtivity.syncbackends.build_job">
+<code class="sig-prename descclassname">packtivity.syncbackends.</code><code class="sig-name descname">build_job</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">process</span></em>, <em class="sig-param"><span class="n">parameters</span></em>, <em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">pack_config</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/packtivity/syncbackends.html#build_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#packtivity.syncbackends.build_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>takes a process template and builds a job out of it using a handler.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="packtivity.syncbackends.prepublish">
+<code class="sig-prename descclassname">packtivity.syncbackends.</code><code class="sig-name descname">prepublish</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spec</span></em>, <em class="sig-param"><span class="n">parameters</span></em>, <em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">pack_config</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/packtivity/syncbackends.html#prepublish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#packtivity.syncbackends.prepublish" title="Permalink to this definition">¶</a></dt>
+<dd><p>attempts to prepublish output data, returns None if not possible</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="packtivity.syncbackends.run_in_env">
+<code class="sig-prename descclassname">packtivity.syncbackends.</code><code class="sig-name descname">run_in_env</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">job</span></em>, <em class="sig-param"><span class="n">environment</span></em>, <em class="sig-param"><span class="n">state</span></em>, <em class="sig-param"><span class="n">metadata</span></em>, <em class="sig-param"><span class="n">pack_config</span></em>, <em class="sig-param"><span class="n">exec_config</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/packtivity/syncbackends.html#run_in_env"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#packtivity.syncbackends.run_in_env" title="Permalink to this definition">¶</a></dt>
+<dd><p>takes a job and an environment and executes with the state context attached</p>
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">packtivity</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Lukas Heinrich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
